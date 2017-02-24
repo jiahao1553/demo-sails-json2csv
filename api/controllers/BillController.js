@@ -7,11 +7,23 @@
 var json2csv = require('json2csv');
 module.exports = {
 	csv:function(req,res){
-		var numbers = {
-			fields:["a", "b", "c"]
-		};
+		var json = [
+  {
+    "car": "Audi",
+    "price": 40000,
+    "color": "blue"
+  }, {
+    "car": "BMW",
+    "price": 35000,
+    "color": "black"
+  }, {
+    "car": "Porsche",
+    "price": 60000,
+    "color": "green"
+  }
+];
 
-		json2csv(numbers, function(err, csv){
+json2csv({data: json, fields: ['car', 'price', 'color']}, function(err, csv){
 			if(err){
 				console.log(err)
 			}else{
